@@ -1,23 +1,20 @@
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
 
 from movieExamDef.main.forms import CreateMovieForm, EditMovieForm, DeleteMovieForm
 from movieExamDef.main.models import Movie
 
 
-def create_movie(request):
-    if request.method == 'POST':
-        form = CreateMovieForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = CreateMovieForm()
+class CreateMovieView(CreateView):
+    template_name = 'main/add-movie.html'
+    form_class = CreateMovieForm
+    success_url = reverse_lazy('dashboard')
 
-    context = {
-        'form': form,
-
-    }
-    return render(request, 'main/add-movie.html', context)
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 def edit_movie(request, pk):

@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView
 from movieExamDef.accounts.forms import CreateProfileForm
 from movieExamDef.accounts.models import Profile
-from movieExamDef.main.models import Movie
+from movieExamDef.main.models import Movie, MoviePhoto
 
 
 class UserLoginView(LoginView):
@@ -36,7 +36,15 @@ class ProfileDetailsView(DetailView):
         # self.object is a Profile instance
         movies = list(Movie.objects.filter(user_id=self.object.user_id))
 
+        movie_photos = MoviePhoto.objects \
+            .filter(related_movie__in=movies) \
+            .distinct()
+
+        total_movie_photos_count = len(movie_photos)
+
+
         context.update({
+            'movie_photos_count': total_movie_photos_count,
             'is_owner':  self.request.user.id,
             'movies': movies,
         })

@@ -2,13 +2,9 @@ from django import forms
 from django.shortcuts import render
 
 from movieExamDef.accounts.models import Profile
+from movieExamDef.common.helpers import BootstrapFormMixin
 from movieExamDef.main.models import Movie
 
-
-# class CreateProfileForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile
-#         fields = ('username', 'email', 'age', 'picture')
 
 class DeleteProfileForm(forms.ModelForm):
 
@@ -23,10 +19,38 @@ class DeleteProfileForm(forms.ModelForm):
         model = Profile
         fields = ()
 
-class CreateMovieForm(forms.ModelForm):
+# class CreateMovieForm(forms.ModelForm):
+#     class Meta:
+#         model = Movie
+#         fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
+
+
+class CreateMovieForm(BootstrapFormMixin, forms.ModelForm):
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.user = user
+        self._init_bootstrap_form_controls()
+
+    def save(self, commit=True):
+
+        movie = super().save(commit=False)
+
+        movie.user = self.user
+        if commit:
+            movie.save()
+
+        return movie
+
     class Meta:
         model = Movie
-        fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
+        fields = ('movie_name', 'director', 'genre', 'description', 'price')
+        widgets = {
+            'movie_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter movie name',
+                }
+            ),
+        }
 
 
 class EditMovieForm(forms.ModelForm):
