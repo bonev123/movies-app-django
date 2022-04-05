@@ -10,8 +10,8 @@ UserModel = get_user_model()
 
 class ProfileDetailsViewTests(TestCase):
     LEGIT_USER_CREDENTIALS = {
-        'username': 'testuser',
-        'password': '12345qew',
+        'username': 'testtest',
+        'password': '123456asd',
     }
 
     LEGIT_PROFILE_DATA = {
@@ -90,3 +90,38 @@ class ProfileDetailsViewTests(TestCase):
             [],
             response.context['movies'],
         )
+
+    def test_when_user_is_not_owner__expect_is_owner_to_be_false(self):
+        _, profile = self.__create_valid_user_and_profile()
+        credentials = {
+            'username': 'testuser',
+            'password': '12345qwe',
+        }
+
+        self.__create_user(**credentials)
+
+        self.client.login(**credentials)
+
+        response = self.__get_response_for_profile(profile)
+
+        self.assertFalse(response.context['is_owner'])
+
+    def test_when_user_has_movies__expect_to_return_only_user_movie(self):
+        user, profile = self.__create_valid_user_and_profile()
+        credentials = {
+            'username': 'testuser2',
+            'password': '12345qwe',
+        }
+        user2 = self.__create_user(**credentials)
+
+        movie, _ = self.__create_movie_and_movie_photo_for_user(user)
+
+        self.__create_movie_and_movie_photo_for_user(user2)
+
+        response = self.__get_response_for_profile(profile)
+
+        self.assertListEqual(
+            [movie],
+            response.context['movies'],
+        )
+

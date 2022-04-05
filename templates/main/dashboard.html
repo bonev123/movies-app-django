@@ -15,17 +15,15 @@
                 {% for movie_photo in movie_photos %}
                     <div class="card ml-3 mb-3" style="width: 18rem;">
                         <!-- Image -->
-                        <img src="{{ movie_photo.photo }}"
+                        <img src="{{ movie_photo.photo.url }}"
                              class="card-img-top" alt="Photo description">
                         <div class="card-body">
                             {% for movie in movie_photo.related_movie.all %}
-                                <h5 class="card-title">{{ movie_photo.related_movie }}
-
-                                </h5>
+                                <h5 class="card-title">{{ movie_photo.related_movie }}</h5>
                             {% endfor %}
                             <!-- First 30 chars from the description -->
                             <p class="card-text">{{ movie_photo.description|truncatechars:30 }}</p>
-                            <a href="{% url 'create movie photo' %}" class="btn btn-primary">See details</a>
+                            <a href="{% url 'movie photo details' movie_photo.id %}" class="btn btn-primary">See details</a>
                         </div>
                     </div>
                 {% endfor %}
