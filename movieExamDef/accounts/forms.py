@@ -3,6 +3,7 @@ from django.contrib.auth import forms as auth_forms, get_user_model
 
 from movieExamDef.accounts.models import Profile
 from movieExamDef.common.helpers import BootstrapFormMixin
+from movieExamDef.main.models import MoviePhoto
 
 
 class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
@@ -62,3 +63,29 @@ class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
                 }
             ),
         }
+
+
+class DeleteProfileForm(forms.ModelForm):
+    def save(self, commit=True):
+        movies = list(self.instance.movie_set.all())
+        MoviePhoto.objects.filter(tagged_pets__in=movies).delete()
+        self.instance.delete()
+
+        return self.instance
+
+    class Meta:
+        model = Profile
+        fields = ()
+
+# class DeleteProfileForm(forms.ModelForm):
+#
+#     def save(self, commit=True):
+#         #image_path = self.instance.image.path
+#         self.instance.delete()
+#         Movie.objects.all().delete()
+#         #os.remove(image_path)
+#         return self.instance
+#
+#     class Meta:
+#         model = Profile
+#         fields = ()

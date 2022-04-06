@@ -6,25 +6,6 @@ from movieExamDef.common.helpers import BootstrapFormMixin
 from movieExamDef.main.models import Movie
 
 
-class DeleteProfileForm(forms.ModelForm):
-
-    def save(self, commit=True):
-        #image_path = self.instance.image.path
-        self.instance.delete()
-        Movie.objects.all().delete()
-        #os.remove(image_path)
-        return self.instance
-
-    class Meta:
-        model = Profile
-        fields = ()
-
-# class CreateMovieForm(forms.ModelForm):
-#     class Meta:
-#         model = Movie
-#         fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
-
-
 class CreateMovieForm(BootstrapFormMixin, forms.ModelForm):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -53,10 +34,20 @@ class CreateMovieForm(BootstrapFormMixin, forms.ModelForm):
         }
 
 
-class EditMovieForm(forms.ModelForm):
+# class EditMovieForm(forms.ModelForm):
+#     class Meta:
+#         model = Movie
+#         fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
+
+class EditMovieForm(BootstrapFormMixin, forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+
     class Meta:
         model = Movie
-        fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
+        exclude = ('user_profile',)
 
 
 class DeleteMovieForm(forms.ModelForm):
@@ -73,7 +64,11 @@ class DeleteMovieForm(forms.ModelForm):
         model = Movie
         fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
 
+
 class MovieDetails(forms.ModelForm):
     def get_movie(self, request, pk):
-        movie = Movie.objects.get(pk=pk)
+        try:
+            movie = Movie.objects.get(pk=pk)
+        except Movie.DoesNotExist:
+            movie = None
         return render(request, "main/movie-details.html", {"movie": movie})

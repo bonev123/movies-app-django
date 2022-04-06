@@ -1,7 +1,7 @@
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView
-from movieExamDef.accounts.forms import CreateProfileForm
+from movieExamDef.accounts.forms import CreateProfileForm, DeleteProfileForm
 from movieExamDef.accounts.models import Profile
 from movieExamDef.main.models import Movie, MoviePhoto
 
@@ -49,3 +49,32 @@ class ProfileDetailsView(DetailView):
             'movies': movies,
         })
         return context
+
+
+# def get_profile():
+#     profiles = Profile.objects.all()
+#     if profiles:
+#         return profiles[0]
+#     return None
+#
+#
+
+# def delete_profile(request):
+#     profile = get_profile()
+#
+#     if request.method == 'POST':
+#         form = DeleteProfileForm(request.POST, request.FILES, instance=profile)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('index')
+#     else:
+#         form = DeleteProfileForm(instance=profile)
+#
+#     context = {
+#         'form': form
+#     }
+#     return render(request, 'main/profile-delete.html', context)
+
+
+# def delete_profile(request):
+#     return profile_action(request, DeleteProfileForm, 'index', get_profile(), 'main/profile_delete.html')

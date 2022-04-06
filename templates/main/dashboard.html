@@ -21,7 +21,6 @@
                             {% for movie in movie_photo.related_movie.all %}
                                 <h5 class="card-title">{{ movie_photo.related_movie }}</h5>
                             {% endfor %}
-                            <!-- First 30 chars from the description -->
                             <p class="card-text">{{ movie_photo.description|truncatechars:30 }}</p>
                             <a href="{% url 'movie photo details' movie_photo.id %}" class="btn btn-primary">See details</a>
                         </div>
