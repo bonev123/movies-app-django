@@ -52,7 +52,7 @@ def delete_movie(request, pk):
         'form': form,
         'movie': movie,
     }
-    return render(request, 'main/delete-movie.html', context)
+    return render(request, 'main/delete-movie-test.html', context)
 
 
 def movie_details(request, pk):

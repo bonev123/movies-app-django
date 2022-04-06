@@ -1,21 +1,15 @@
 {% extends 'base/base.html' %}
+{% block title %}Add Movie{% endblock title %}
+
 {% block page_content %}
+    <h1>Add your movie to our database</h1>
 
-<section class="createPage">
-
-    <form method="POST" action="{% url 'create movie' %}">
-        <fieldset>
-            <h1 class="text-center">Add Your Movie</h1>
-            <div class="container">
-
-
-                {{ form }}
-                {% csrf_token %}
-                <!-- Button for Adding Album -->
-                <button class="add-movie" type="submit">Add New Movie</button>
-            </div>
-        </fieldset>
-    </form>
-</section>
+  <form action="{% url 'create movie' %}" method="post">
+    <div class="container">
+        {{ form }}
+        {% csrf_token %}
+        <button class="add-movie" type="submit">Add New Movie</button>
+    </div>
+  </form>
 
 {% endblock %}
