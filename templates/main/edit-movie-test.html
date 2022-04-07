@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+{% block title %}Edit Movie{% endblock title %}
+
+{% block page_content %}
+    <h1>Edit your movie information</h1>
+
+  <form action="{% url 'edit movie' movie.id %}" method="post">
+    <div class="container">
+        {{ form }}
+        {% csrf_token %}
+        <button class="edit-movie" type="submit">Edit Movie</button>
+
+    </div>
+  </form>
+
+{% endblock %}

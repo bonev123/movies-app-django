@@ -26,7 +26,7 @@ class MoviePhotoDetailsView(auth_mixin.LoginRequiredMixin, views.DetailView):
 
 class CreateMoviePhotoView(auth_mixin.LoginRequiredMixin, views.CreateView):
     model = MoviePhoto
-    template_name = 'main/photo_create.html'
+    template_name = 'main/photo_create-test.html'
     fields = ('photo', 'description', 'related_movie')
 
     success_url = reverse_lazy('dashboard')

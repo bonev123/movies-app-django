@@ -1,18 +1,13 @@
 {% extends 'base/base.html' %}
+{% block title %}Movie Details{% endblock title %}
+
 {% block page_content %}
-<section id="detailsPage">
-    <div class="wrapper">
-
-        <div class="movieCover">
-
-            <img src="{{ movie.image_url }} " style="width:50%;" alt="Cover Image" >
-
+    <div>
+        <div>
+            <img src="{{ movie.image_url }} " style="width:50%;"  >
         </div>
-
-        <div class="movieInfo">
-
-            <div class="movieText">
-
+        <div>
+            <div>
                 <h1>Name: {{ movie.movie_name }}</h1>
                 <h3>Director: {{ movie.director }}</h3>
                 <h4>Genre: {{ movie.genre }}</h4>
@@ -21,15 +16,13 @@
                     <p>Description: {{ movie.description }}</p>
                 {% endif %}
             </div>
-
-            <div class="actionBtn">
+            <div>
                 <a href="{% url 'edit movie' movie.pk %}" class="edit">Edit</a>
                 <a href="{% url 'delete movie' movie.pk %}" class="remove">Delete</a>
 
             </div>
-
         </div>
     </div>
-</section>
+
 
 {% endblock %}

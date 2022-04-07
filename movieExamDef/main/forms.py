@@ -34,20 +34,20 @@ class CreateMovieForm(BootstrapFormMixin, forms.ModelForm):
         }
 
 
-# class EditMovieForm(forms.ModelForm):
-#     class Meta:
-#         model = Movie
-#         fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
-
-class EditMovieForm(BootstrapFormMixin, forms.ModelForm):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self._init_bootstrap_form_controls()
-
+class EditMovieForm(forms.ModelForm):
     class Meta:
         model = Movie
-        exclude = ('user_profile',)
+        fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
+
+# class EditMovieForm(BootstrapFormMixin, forms.ModelForm):
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#         self._init_bootstrap_form_controls()
+#
+#     class Meta:
+#         model = Movie
+#         exclude = ('user_profile',)
 
 
 class DeleteMovieForm(forms.ModelForm):
@@ -71,4 +71,4 @@ class MovieDetails(forms.ModelForm):
             movie = Movie.objects.get(pk=pk)
         except Movie.DoesNotExist:
             movie = None
-        return render(request, "main/movie-details.html", {"movie": movie})
+        return render(request, "main/movie-details-test.html", {"movie": movie})

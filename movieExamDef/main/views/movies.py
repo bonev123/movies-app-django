@@ -8,7 +8,7 @@ from movieExamDef.main.models import Movie
 
 
 class CreateMovieView(CreateView):
-    template_name = 'main/add-movie.html'
+    template_name = 'main/add-movie-test.html'
     form_class = CreateMovieForm
     success_url = reverse_lazy('dashboard')
 
@@ -18,25 +18,25 @@ class CreateMovieView(CreateView):
         return kwargs
 
 
-# def edit_movie(request, pk):
-#     movie = Movie.objects.get(pk=pk)
-#     if request.method == 'POST':
-#         form = EditMovieForm(request.POST, instance=movie)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('index')
-#     else:
-#         form = EditMovieForm(instance=movie)
-#
-#     context = {
-#         'form': form,
-#         'movie': movie,
-#     }
-#     return render(request, 'main/edit-movie.html', context)
+def edit_movie(request, pk):
+    movie = Movie.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = EditMovieForm(request.POST, instance=movie)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = EditMovieForm(instance=movie)
 
-class EditMovieView(UpdateView):
-    template_name = 'main/edit-movie.html'
-    form_class = EditMovieForm
+    context = {
+        'form': form,
+        'movie': movie,
+    }
+    return render(request, 'main/edit-movie-test.html', context)
+
+# class EditMovieView(UpdateView):
+#     template_name = 'main/edit-movie.html'
+#     form_class = EditMovieForm
 
 def delete_movie(request, pk):
     movie = Movie.objects.get(pk=pk)
@@ -60,12 +60,12 @@ def movie_details(request, pk):
     context = {
         'movie': movie
     }
-    return render(request, 'main/movie-details.html', context)
+    return render(request, 'main/movie-details-test.html', context)
 
 
 # class MovieDetailsView(LoginRequiredMixin, DetailView):
 #     model = Movie
-#     template_name = 'main/movie-details.html'
+#     template_name = 'main/movie-details-test.html'
 #     context_object_name = 'movie'
 #
 #     def get_context_data(self, **kwargs):
