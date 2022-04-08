@@ -3,12 +3,12 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
 
-from movieExamDef.main.models import MoviePhoto
+from movieExamDef.main.models import MoviePhoto, Movie
 
 
 class MoviePhotoDetailsView(auth_mixin.LoginRequiredMixin, views.DetailView):
     model = MoviePhoto
-    template_name = 'main/photo_details.html'
+    template_name = 'main/photo_details-test.html'
     context_object_name = 'movie_photo'
 
     def get_queryset(self):
