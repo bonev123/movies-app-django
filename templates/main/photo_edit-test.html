@@ -1,10 +1,12 @@
 {% extends 'base/base.html' %}
+{% block title %}Edit Movie Photo{% endblock title %}
+
 {% block page_content %}
-    <h1 class="text-center">Edit Movie Photo</h1>
-    <img src="{{ object.photo.url }}"
-         class="w-50 rounded mx-auto d-block" alt="Photo description">
-    <div class="row">
-        <div class="col-lg-3"></div>
+    <h1 class="text-center">Edit a movie photo from your gallery</h1>
+
+  <div class="row">
+        <img src="{{ object.photo.url }}"
+         class="w-50" alt="Photo description">
         <div class="col-lg-6">
             <form method="post" action="{% url 'edit movie photo' object.pk %}">
                 {% csrf_token %}
@@ -12,6 +14,7 @@
                 <button class="btn btn-primary mt-2" type="submit">Edit</button>
             </form>
         </div>
-        <div class="col-lg-3"></div>
     </div>
+
 {% endblock %}
+

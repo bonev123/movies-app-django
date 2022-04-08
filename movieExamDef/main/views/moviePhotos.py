@@ -38,7 +38,7 @@ class CreateMoviePhotoView(auth_mixin.LoginRequiredMixin, views.CreateView):
 
 class EditMoviePhotoView(views.UpdateView):
     model = MoviePhoto
-    template_name = 'main/photo_edit.html'
+    template_name = 'main/photo_edit-test.html'
     fields = ('description',)
 
     def get_success_url(self):
