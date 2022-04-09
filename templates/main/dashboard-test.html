@@ -10,18 +10,17 @@
     </h1>
 
     {% if movie_photos %}
-        <div class="container mb-5">
-            <div class="row mb-5">
+        <div class="container mb-3 ">
+            <div class="row mb-3">
                 {% for movie_photo in movie_photos %}
-                    <div class="card ml-3 mb-3" style="width: 18rem;">
-                        <!-- Image -->
-                        <img src="{{ movie_photo.photo.url }}"
-                             class="card-img-top" alt="Photo description">
+                    <div class="card ml-3 mb-3" style="width: 17rem;">
+
+                        <img src="{{ movie_photo.photo.url }}">
                         <div class="card-body">
                             {% for movie in movie_photo.related_movie.all %}
-                                <h5 class="card-title">{{ movie.movie_name }}</h5>
+                                <h5>{{ movie.movie_name }}</h5>
                             {% endfor %}
-                            <p class="card-text">{{ movie_photo.description|truncatechars:30 }}</p>
+                            <p >{{ movie_photo.description|truncatechars:30 }}</p>
                             <a href="{% url 'movie photo details' movie_photo.id %}" class="btn btn-primary">See details</a>
                         </div>
                     </div>

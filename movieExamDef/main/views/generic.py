@@ -15,5 +15,5 @@ class HomeView(RedirectToDashboard, TemplateView):
 
 class DashboardView(ListView):
     model = MoviePhoto
-    template_name = 'main/dashboard.html'
+    template_name = 'main/dashboard-test.html'
     context_object_name = 'movie_photos'
