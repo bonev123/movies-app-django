@@ -1,4 +1,6 @@
 {% extends 'base/base.html' %}
+{% block title %}Profile Details{% endblock title %}
+
 {% block page_content %}
     <div class="row justify-content-center">
         <div class="d-flex">
@@ -6,9 +8,7 @@
                 <img src="{{ profile.picture }}"
                      class="w-50 rounded mx-auto d-block" alt="description">
             </div>
-            <div class="d-inline p-2 w-50">
-
-
+            <div class="d-inline p-1 w-50">
                 <div class="d-flex flex-column">
                     <h5><u>Name:</u> {{ profile.first_name }} {{ profile.last_name }}</h5>
 
@@ -22,7 +22,7 @@
                         <h5><u>Description:</u> {{ profile.description }}</h5>
                     {% endif %}
                 </div>
-                <p class="mt-2">Total Images: {{ total_movie_photos_count }}</p>
+                <p class="mt-3">Total Images: {{ total_movie_photos_count }}</p>
 
                 {% if is_owner %}
                     {#                    <a href="{% url 'edit profile' %}" class="btn btn-primary">Edit</a>#}

@@ -1,17 +1,17 @@
 {% extends 'base/base.html' %}
+{% block title %}Create Profile{% endblock title %}
 
 {% block page_content %}
     <h1 class="text-center">Create Your Profile</h1>
     <div class="row">
         <div class="col-lg-3"></div>
-        <div class="col-lg-6">
+        <div class="lgn-container col-lg-5">
             <form method="post" action="{% url 'register' %}">
                 {% csrf_token %}
                 {{ form }}
                 <button class="btn btn-primary mt-2" type="submit">Create</button>
             </form>
-            <p>Already have an account? <a href="{% url 'login user' %}">Login</a></p>
+                <p>Already have an account? <a href="{% url 'login user' %}">Login</a></p>
         </div>
-        <div class="col-lg-3"></div>
     </div>
 {% endblock %}

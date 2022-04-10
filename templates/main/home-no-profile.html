@@ -1,24 +1,13 @@
 {% extends 'base/base.html' %}
 {% block page_content %}
+
 <div class="container-inline-block">
-    <section id="welcomePage">
-        <div id="welcome-message">
-            <h1>Welcome to</h1>
-            <h1>My Movie App!</h1>
-                </div>
-        <div class="movie-img">
-            <img src="/static/images/project_movies.jpg" style="width:40%;" alt="movie-icon">
-        </div>
-    </section>
-
-        <div class="flex-row">
-
-            <!-- Login Button -->
-            <a href="{% url 'login user' %}" class="btn btn-lg btn-secondary">Login</a>
-
-            <!-- Register Button -->
-            <a href="{% url 'register' %}" class="btn btn-lg btn-secondary">Register</a>
-        </div>
-</div>
-
+    <h1>Welcome to</h1>
+    <h1>My Movie App!</h1>
+    <div class="movie-img">
+        <img src="/static/images/potential%20movie%20image.jpg" class="img-fluid" alt="movie-icon">
+    </div>
+    <a href="{% url 'login user' %}" class="btn btn-lg btn-secondary">Login</a>
+    <a href="{% url 'register' %}" class="btn btn-lg btn-secondary">Register</a>
+    </div>
 {% endblock %}
