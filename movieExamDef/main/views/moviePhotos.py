@@ -8,7 +8,7 @@ from movieExamDef.main.models import MoviePhoto, Movie
 
 class MoviePhotoDetailsView(auth_mixin.LoginRequiredMixin, views.DetailView):
     model = MoviePhoto
-    template_name = 'main/photo_details-test.html'
+    template_name = 'main/photo_details.html'
     context_object_name = 'movie_photo'
 
     def get_queryset(self):
@@ -26,7 +26,7 @@ class MoviePhotoDetailsView(auth_mixin.LoginRequiredMixin, views.DetailView):
 
 class CreateMoviePhotoView(auth_mixin.LoginRequiredMixin, views.CreateView):
     model = MoviePhoto
-    template_name = 'main/photo_create-test.html'
+    template_name = 'main/photo_create.html'
     fields = ('photo', 'description', 'related_movie')
 
     success_url = reverse_lazy('dashboard')
@@ -38,7 +38,7 @@ class CreateMoviePhotoView(auth_mixin.LoginRequiredMixin, views.CreateView):
 
 class EditMoviePhotoView(views.UpdateView):
     model = MoviePhoto
-    template_name = 'main/photo_edit-test.html'
+    template_name = 'main/photo_edit.html'
     fields = ('description',)
 
     def get_success_url(self):

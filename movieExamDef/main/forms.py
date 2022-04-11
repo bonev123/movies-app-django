@@ -71,4 +71,4 @@ class MovieDetails(forms.ModelForm):
             movie = Movie.objects.get(pk=pk)
         except Movie.DoesNotExist:
             movie = None
-        return render(request, "main/movie-details-test.html", {"movie": movie})
+        return render(request, "main/movie-details.html", {"movie": movie})

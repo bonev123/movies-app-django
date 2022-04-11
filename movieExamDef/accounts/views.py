@@ -8,7 +8,7 @@ from movieExamDef.main.models import Movie, MoviePhoto
 
 
 class UserLoginView(LoginView):
-    template_name = 'accounts/login_page-test.html'
+    template_name = 'accounts/login_page.html'
     success_url = reverse_lazy('dashboard')
 
     def get_success_url(self):
@@ -18,18 +18,18 @@ class UserLoginView(LoginView):
 
 
 class ChangeUserPasswordView(PasswordChangeView):
-    template_name = 'accounts/change_password-test.html'
+    template_name = 'accounts/change_password.html'
 
 
 class UserRegisterView(CreateView):
     form_class = CreateProfileForm
-    template_name = 'accounts/profile_create-test.html'
+    template_name = 'accounts/profile_create.html'
     success_url = reverse_lazy('dashboard')
 
 
 class ProfileDetailsView(DetailView):
     model = Profile
-    template_name = 'accounts/profile_details-test.html'
+    template_name = 'accounts/profile_details.html'
     context_object_name = 'profile'
 
     def get_context_data(self, **kwargs):
@@ -44,7 +44,7 @@ class ProfileDetailsView(DetailView):
 
 
         context.update({
-            'movie_photos_count': total_movie_photos_count,
+            'total_movie_photos_count': total_movie_photos_count,
             'is_owner':  self.request.user.id,
             'movies': movies,
         })

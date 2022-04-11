@@ -10,10 +10,10 @@
     </h1>
 
     {% if movie_photos %}
-        <div class="container mb-3 ">
-            <div class="row mb-3">
+        <div class="container">
+            <div class="row">
                 {% for movie_photo in movie_photos %}
-                    <div class="card ml-3 mb-3" style="width: 17rem;">
+                    <div class="card ml-4 mb-4" style="width: 17rem;">
                         <img src="{{ movie_photo.photo.url }}" alt="Photo description">
                         <div class="card-body" >
                             {% for movie in movie_photo.related_movie.all %}

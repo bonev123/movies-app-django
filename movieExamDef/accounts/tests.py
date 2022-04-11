@@ -67,7 +67,7 @@ class ProfileDetailsViewTests(TestCase):
     def test_show_correct_template(self):
         _, profile = self.__create_valid_user_and_profile()
         self.__get_response_for_profile(profile)
-        self.assertTemplateUsed('accounts/profile_details-test.html')
+        self.assertTemplateUsed('accounts/profile_details.html')
 
     def test_user_is_owner__expect_to_be_true(self):
         _, profile = self.__create_valid_user_and_profile()

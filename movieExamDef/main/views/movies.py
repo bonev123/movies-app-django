@@ -8,7 +8,7 @@ from movieExamDef.main.models import Movie
 
 
 class CreateMovieView(CreateView):
-    template_name = 'main/add-movie-test.html'
+    template_name = 'main/add-movie.html'
     form_class = CreateMovieForm
     success_url = reverse_lazy('dashboard')
 
@@ -32,7 +32,7 @@ def edit_movie(request, pk):
         'form': form,
         'movie': movie,
     }
-    return render(request, 'main/edit-movie-test.html', context)
+    return render(request, 'main/edit-movie.html', context)
 
 # class EditMovieView(UpdateView):
 #     template_name = 'main/edit-movie.html'
@@ -52,7 +52,7 @@ def delete_movie(request, pk):
         'form': form,
         'movie': movie,
     }
-    return render(request, 'main/delete-movie-test.html', context)
+    return render(request, 'main/delete-movie.html', context)
 
 
 def movie_details(request, pk):
@@ -60,12 +60,12 @@ def movie_details(request, pk):
     context = {
         'movie': movie
     }
-    return render(request, 'main/movie-details-test.html', context)
+    return render(request, 'main/movie-details.html', context)
 
 
 # class MovieDetailsView(LoginRequiredMixin, DetailView):
 #     model = Movie
-#     template_name = 'main/movie-details-test.html'
+#     template_name = 'main/movie-details.html'
 #     context_object_name = 'movie'
 #
 #     def get_context_data(self, **kwargs):
