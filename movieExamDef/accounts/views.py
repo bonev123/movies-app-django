@@ -18,7 +18,7 @@ class UserLoginView(LoginView):
 
 
 class ChangeUserPasswordView(PasswordChangeView):
-    template_name = 'accounts/change_password.html'
+    template_name = 'accounts/change_password-test.html'
 
 
 class UserRegisterView(CreateView):
