@@ -4,8 +4,9 @@ from django.core.validators import MinLengthValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth import models as auth_models
 
+from movieExamDef.common.validators import validate_only_letters
 from movieExamDef.main.managers import MovieUserManager
-from movieExamDef.main.validators import validate_desired_chars
+from movieExamDef.common.validators import validate_desired_chars
 
 
 class MoviesUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
@@ -38,9 +39,17 @@ class Profile(models.Model):
 
     first_name = models.CharField(
         max_length=CHAR_MAX_LEN,
+        validators=(
+            MinLengthValidator(CHAR_MIN_LEN),
+            validate_only_letters,
+        )
     )
     last_name = models.CharField(
         max_length=CHAR_MAX_LEN,
+        validators=(
+            MinLengthValidator(CHAR_MIN_LEN),
+            validate_only_letters,
+        )
     )
     username = models.CharField(
         max_length=CHAR_MAX_LEN,

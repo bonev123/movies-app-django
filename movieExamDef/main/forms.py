@@ -2,7 +2,7 @@ from django import forms
 from django.shortcuts import render
 
 from movieExamDef.accounts.models import Profile
-from movieExamDef.common.helpers import BootstrapFormMixin
+from movieExamDef.common.helpers import BootstrapFormMixin, DisabledFieldsFormMixin
 from movieExamDef.main.models import Movie
 
 
@@ -44,18 +44,8 @@ class EditMovieForm(forms.ModelForm):
         model = Movie
         fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
 
-# class EditMovieForm(BootstrapFormMixin, forms.ModelForm):
-#
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-#         self._init_bootstrap_form_controls()
-#
-#     class Meta:
-#         model = Movie
-#         exclude = ('user_profile',)
 
-
-class DeleteMovieForm(forms.ModelForm):
+class DeleteMovieForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for (_, field) in self.fields.items():
