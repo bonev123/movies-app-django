@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth import models as auth_models
 
 from movieExamDef.common.validators import validate_only_letters
-from movieExamDef.main.managers import MovieUserManager
+from movieExamDef.accounts.managers import MovieUserManager
 from movieExamDef.common.validators import validate_desired_chars
 
 
