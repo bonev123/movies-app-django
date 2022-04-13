@@ -34,7 +34,7 @@ class ProfileDetailsViewTests(TestCase):
 
     VALID_MOVIE_PHOTO_DATA = {
         'photo': 'asd.jpg',
-        #'publication_date': date.today(),
+
     }
 
     def __create_valid_user_and_profile(self):
@@ -109,7 +109,7 @@ class ProfileDetailsViewTests(TestCase):
     def test_when_user_has_movies__expect_to_return_only_user_movie(self):
         user, profile = self.__create_valid_user_and_profile()
         credentials = {
-            'username': 'testuser2',
+            'username': 'testuser222222',
             'password': '12345qwe',
         }
         user2 = self.__create_user(**credentials)

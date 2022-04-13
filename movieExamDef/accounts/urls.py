@@ -10,7 +10,7 @@ urlpatterns = [
     path('<int:pk>/', ProfileDetailsView.as_view(), name='profile details'),
     path('edit-password/', ChangeUserPasswordView.as_view(), name='change password'),
     path('password_change_done/', RedirectView.as_view(url=reverse_lazy('dashboard')), name='password_change_done'),
-    #path('delete/', delete_profile, name='delete profile'),
+
 
 ]
 

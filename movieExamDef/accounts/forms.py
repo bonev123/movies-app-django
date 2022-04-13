@@ -64,15 +64,33 @@ class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
         }
 
 
-# class DeleteProfileForm(forms.ModelForm):
-#     def save(self, commit=True):
-#         movies = list(self.instance.movie_set.all())
-#         MoviePhoto.objects.filter(tagged_pets__in=movies).delete()
-#         self.instance.delete()
-#
-#         return self.instance
-#
-#     class Meta:
-#         model = Profile
-#         fields = ()
+class EditProfileForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Profile
+        fields = ['first_name', 'last_name', 'picture', 'age']
+        widgets = {
+            'first_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter first name',
+                }
+            ),
+            'last_name': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter last name',
+                }
+            ),
+            'picture': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter URL',
+                }
+            ),
+            'age': forms.TextInput(
+                attrs={
+                    'placeholder': 'Enter age',
+                }
+            )
+        }
 

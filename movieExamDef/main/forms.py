@@ -24,11 +24,16 @@ class CreateMovieForm(BootstrapFormMixin, forms.ModelForm):
 
     class Meta:
         model = Movie
-        fields = ('movie_name', 'director', 'genre', 'description', 'price')
+        fields = ('movie_name', 'director', 'genre', 'image_url', 'description', 'price')
         widgets = {
             'movie_name': forms.TextInput(
                 attrs={
                     'placeholder': 'Enter movie name',
+                }
+            ),
+            'image_url': forms.URLInput(
+                attrs={
+                    'placeholder': 'Enter movie URL',
                 }
             ),
         }

@@ -1,8 +1,8 @@
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.views import LoginView, PasswordChangeView
-from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView
-from movieExamDef.accounts.forms import CreateProfileForm
+from django.views.generic import CreateView, DetailView, UpdateView
+from movieExamDef.accounts.forms import CreateProfileForm, EditProfileForm
 from movieExamDef.accounts.models import Profile
 from movieExamDef.main.models import Movie, MoviePhoto
 
@@ -51,5 +51,3 @@ class ProfileDetailsView(DetailView):
         return context
 
 
-# def delete_profile(request):
-#     return profile_action(request, DeleteProfileForm, 'index', get_profile(), 'main/profile_delete.html')
