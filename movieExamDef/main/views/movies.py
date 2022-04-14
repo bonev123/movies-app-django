@@ -38,6 +38,7 @@ def edit_movie(request, pk):
 #     template_name = 'main/edit-movie.html'
 #     form_class = EditMovieForm
 
+
 def delete_movie(request, pk):
     movie = Movie.objects.get(pk=pk)
     if request.method == 'POST':

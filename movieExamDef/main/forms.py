@@ -50,6 +50,7 @@ class DeleteMovieForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelFo
         super().__init__(*args, **kwargs)
         for (_, field) in self.fields.items():
             field.widget.attrs['readonly'] = 'readonly'
+            field.widget.attrs['disabled'] = 'disabled'
 
     def save(self, commit=True):
         self.instance.delete()
