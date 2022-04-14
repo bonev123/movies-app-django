@@ -42,7 +42,6 @@ class ProfileDetailsView(DetailView):
 
         total_movie_photos_count = len(movie_photos)
 
-
         context.update({
             'total_movie_photos_count': total_movie_photos_count,
             'is_owner':  self.request.user.id,
