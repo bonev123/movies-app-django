@@ -64,9 +64,6 @@ class MoviePhoto(models.Model):
         auto_now_add=True,
     )
 
-    likes = models.IntegerField(
-        default=0,
-    )
     related_movie = models.ManyToManyField(
         Movie,
     )
