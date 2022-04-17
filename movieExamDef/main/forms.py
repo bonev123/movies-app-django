@@ -48,9 +48,8 @@ class EditMovieForm(forms.ModelForm):
 class DeleteMovieForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for (_, field) in self.fields.items():
-            field.widget.attrs['readonly'] = 'readonly'
-            field.widget.attrs['disabled'] = 'disabled'
+        self._init_bootstrap_form_controls()
+        self._init_disabled_fields()
 
     def save(self, commit=True):
         self.instance.delete()
@@ -58,7 +57,7 @@ class DeleteMovieForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelFo
 
     class Meta:
         model = Movie
-        fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
+        exclude = ('user', 'genre')
 
 
 class MovieDetails(forms.ModelForm):
