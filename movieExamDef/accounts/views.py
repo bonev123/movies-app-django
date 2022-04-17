@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserChangeForm
-from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.contrib.auth.views import LoginView, PasswordChangeView, LogoutView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
 from movieExamDef.accounts.forms import CreateProfileForm, EditProfileForm
@@ -50,3 +50,6 @@ class ProfileDetailsView(DetailView):
         return context
 
 
+class ProfileLogoutView(LogoutView):
+    template_name = 'accounts/logout_page.html'
+    success_url = reverse_lazy('logout user')
