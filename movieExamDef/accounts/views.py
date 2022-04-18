@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.views import LoginView, PasswordChangeView, LogoutView
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
 from movieExamDef.accounts.forms import CreateProfileForm, EditProfileForm
@@ -53,3 +54,10 @@ class ProfileDetailsView(DetailView):
 class ProfileLogoutView(LogoutView):
     template_name = 'accounts/logout_page.html'
     success_url = reverse_lazy('logout user')
+
+
+def error_401(request, exception):
+    context = {
+        'message': "You are not authorized to show this page. Please create an account or contact the administrator!"
+    }
+    return render(request, 'main/401_error.html', context=context)
