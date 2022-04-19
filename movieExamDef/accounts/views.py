@@ -41,10 +41,12 @@ class ProfileDetailsView(DetailView):
             .filter(related_movie__in=movies) \
             .distinct()
 
+        total_likes_count = sum(pp.likes for pp in movie_photos)
         total_movie_photos_count = len(movie_photos)
 
         context.update({
             'total_movie_photos_count': total_movie_photos_count,
+            'total_likes_count': total_likes_count,
             'is_owner':  self.request.user.id,
             'movies': movies,
         })

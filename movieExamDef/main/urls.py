@@ -1,7 +1,8 @@
 from django.urls import path
 
 from movieExamDef.main.views.generic import HomeView, DashboardView
-from movieExamDef.main.views.moviePhotos import MoviePhotoDetailsView, CreateMoviePhotoView, EditMoviePhotoView
+from movieExamDef.main.views.moviePhotos import MoviePhotoDetailsView, CreateMoviePhotoView, EditMoviePhotoView, \
+    like_movie_photo
 from movieExamDef.main.views.movies import delete_movie, CreateMovieView, movie_details, edit_movie
 
 urlpatterns = [
@@ -16,6 +17,7 @@ urlpatterns = [
     path('photo/details/<int:pk>/', MoviePhotoDetailsView.as_view(), name='movie photo details'),
     path('photo/add/', CreateMoviePhotoView.as_view(), name='create movie photo'),
     path('photo/edit/<int:pk>/', EditMoviePhotoView.as_view(), name='edit movie photo'),
+    path('photo/like/<int:pk>/', like_movie_photo, name='like movie photo'),
 
 ]
 

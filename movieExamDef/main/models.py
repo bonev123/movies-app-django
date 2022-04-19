@@ -67,6 +67,9 @@ class MoviePhoto(models.Model):
     related_movie = models.ManyToManyField(
         Movie,
     )
+    likes = models.IntegerField(
+        default=0,
+    )
     user = models.ForeignKey(
         UserModel,
         on_delete=models.CASCADE,

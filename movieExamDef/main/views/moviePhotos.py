@@ -45,3 +45,9 @@ class EditMoviePhotoView(views.UpdateView):
         return reverse_lazy('movie photo details', kwargs={'pk': self.object.id})
 
 
+def like_movie_photo(request, pk):
+    movie_photo = MoviePhoto.objects.get(pk=pk)
+    movie_photo.likes += 1
+    movie_photo.save()
+
+    return redirect('movie photo details', pk)
