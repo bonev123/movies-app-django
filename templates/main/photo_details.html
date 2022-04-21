@@ -7,17 +7,18 @@
             <img src="{{ movie_photo.photo.url }}"
                  class="w-100" alt="{{ movie_photo.description }}"/>
         </div>
-        <div>
-            <div>
-                <h5><u>Photo description:</u> {{ movie_photo.description }}</h5>
-                <h5><u>Published:</u> {{ movie_photo.publication_date }}</h5>
-            </div>
-            {% if not is_owner %}
-                <a href="{% url 'like movie photo' movie_photo.id %}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-            {% endif %}
+        <div class="d-inline p-2 w-50">
+            {% for movie in movie_photo.related_movie.all %}
+                <div>
+                    <h5><u>Photo description:</u> {{ movie_photo.description }}</h5>
+                    <h5><u>Published:</u> {{ movie_photo.publication_date }}</h5>
+                </div>
+            {% endfor %}
             <p class="mt-2">Likes: {{ movie_photo.likes }}</p>
             {% if is_owner %}
                 <a href="{% url 'edit movie photo' movie_photo.pk %}" class="btn btn-primary">Edit</a>
+            {% else %}
+                <a href="{% url 'like movie photo' movie_photo.id %}"><i class="fa fa-heart" aria-hidden="true"></i></a>
             {% endif %}
         </div>
     </div>
