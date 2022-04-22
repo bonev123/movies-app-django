@@ -3,7 +3,8 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
 
-from movieExamDef.main.forms import CreateMovieForm, EditMovieForm, DeleteMovieForm
+from movieExamDef.common.view_mixins import RedirectPermissionRequiredMixin
+from movieExamDef.main.forms import CreateMovieForm, EditMovieForm, DeleteMovieForm, DetailsMovieForm
 from movieExamDef.main.models import Movie
 
 
@@ -56,24 +57,18 @@ def delete_movie(request, pk):
     return render(request, 'main/delete-movie.html', context)
 
 
-def movie_details(request, pk):
-    movie = Movie.objects.get(pk=pk)
-    context = {
-        'movie': movie
-    }
-    return render(request, 'main/movie-details.html', context)
+# def movie_details(request, pk):
+#     movie = Movie.objects.get(pk=pk)
+#     context = {
+#         'movie': movie
+#     }
+#     return render(request, 'main/movie-details.html', context)
 
 
-# class MovieDetailsView(LoginRequiredMixin, DetailView):
-#     model = Movie
-#     template_name = 'main/movie-details.html'
-#     context_object_name = 'movie'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         post = Movie.objects.filter(id=self.kwargs.get('id'))
-#         context['is_owner'] = self.object.user == self.request.user
-#         context = {
-#             'post': post
-#         }
-#         return context
+class DetailsMovieView(LoginRequiredMixin, DetailView):
+    model = Movie
+    template_name = 'main/movie-details.html'
+    form_class = DetailsMovieForm
+    context_object_name = 'movie'
+    permission_required = ('main.movie-details',)
+

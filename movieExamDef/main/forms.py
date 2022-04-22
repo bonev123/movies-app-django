@@ -60,10 +60,19 @@ class DeleteMovieForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelFo
         exclude = ('user', 'genre')
 
 
-class MovieDetails(forms.ModelForm):
-    def get_movie(self, request, pk):
-        try:
-            movie = Movie.objects.get(pk=pk)
-        except Movie.DoesNotExist:
-            movie = None
-        return render(request, "main/movie-details.html", {"movie": movie})
+# class MovieDetails(forms.ModelForm):
+#     def get_movie(self, request, pk):
+#         try:
+#             movie = Movie.objects.get(pk=pk)
+#         except Movie.DoesNotExist:
+#             movie = None
+#         return render(request, "main/movie-details.html", {"movie": movie})
+
+
+class DetailsMovieForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Movie
+        exclude = ['user']
