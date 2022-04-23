@@ -57,6 +57,15 @@ class ProfileLogoutView(LogoutView):
     template_name = 'accounts/logout_page.html'
     success_url = reverse_lazy('logout user')
 
+class ProfileEditView(UpdateView):
+    model = Profile
+    template_name = 'accounts/profile_edit.html'
+    form_class = EditProfileForm
+
+    def get_success_url(self):
+        return reverse_lazy('profile details', kwargs={
+            'pk': self.object.user_id
+        })
 
 def error_401(request, exception):
     context = {

@@ -125,3 +125,5 @@ class ProfileDetailsViewTests(TestCase):
             response.context['movies'],
         )
 
+
+
