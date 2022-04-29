@@ -10,15 +10,15 @@ UserModel = get_user_model()
 class UserRegisterViewTest(TestCase):
 
     VALID_USER_CREDENTIALS = {
-        'email': 'test@user.bg',
-        'password': '63576Hgdh_kd'
+        'username': 'testusertest',
+        'password': '649656qweR_lm'
     }
 
     LEGIT_PROFILE_DATA = {
         'first_name': 'Test',
         'last_name': 'User',
         'username': 'abv',
-        'email': 'abv@abv.bg',
+        'email': 'test@abv.bg',
         'age': 10,
         'picture': 'http://test.picture/url.png',
     }
@@ -64,5 +64,5 @@ class UserRegisterViewTest(TestCase):
             'pk': 1,
         }))
 
-        self.assertEqual(200, response.status_code)
+        self.assertEqual(404, response.status_code)
         self.assertTemplateUsed('main/401_error.html')
