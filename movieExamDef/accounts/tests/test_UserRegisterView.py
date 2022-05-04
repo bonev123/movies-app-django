@@ -45,7 +45,7 @@ class UserRegisterViewTest(TestCase):
     def __get_response_for_profile(self, profile):
         return self.client.get(reverse('profile details', kwargs={'pk': profile.pk}))
 
-    def test_user_register__when_input_valid__expect_use_correct_template(self):
+    def test_user_register__when_input_valid__expect_to_use_correct_template(self):
         _, profile = self.__create_valid_user_and_profile()
         self.__get_response_for_create_profile(profile)
         self.assertTemplateUsed('accounts/profile_create.html')
@@ -59,7 +59,7 @@ class UserRegisterViewTest(TestCase):
         self.assertEqual(self.LEGIT_PROFILE_DATA['email'], profile.email)
         self.assertEqual(self.LEGIT_PROFILE_DATA['age'], profile.age)
 
-    def test_when_opening_not_existing_profile__expect_401(self):
+    def test_when_opening_not_existing_profile__expect_404(self):
         response = self.client.get(reverse('profile details', kwargs={
             'pk': 1,
         }))

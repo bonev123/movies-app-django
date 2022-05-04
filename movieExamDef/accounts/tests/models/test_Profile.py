@@ -5,24 +5,23 @@ from movieExamDef.accounts.models import Profile, MoviesUser
 
 
 class ProfileTests(TestCase):
+    def setUp(self) -> None:
+        self.TEST_USER_DEFAULT = {
+            'username': 'testusertest',
+            'password': '649656qweR_lm_'
+        }
+        self.user = MoviesUser(**self.TEST_USER_DEFAULT)
 
-    TEST_USER_DEFAULT = {
-        'username': 'testusertest',
-        'password': '649656qweR_lm'
-    }
-
-    user = MoviesUser(TEST_USER_DEFAULT)
-
-    user_pk = user.pk
-    VALID_PROFILE_DATA = {
-        'first_name': 'Test',
-        'last_name': 'User',
-        'username': 'abv',
-        'email': 'test@abv.bg',
-        'age': 10,
-        'picture': 'http://test.picture/url.png',
-        'user': user,
-    }
+        self.user_pk = self.user.pk
+        self.VALID_PROFILE_DATA = {
+            'first_name': 'Test',
+            'last_name': 'User',
+            'username': 'abv',
+            'email': 'test@abv.bg',
+            'age': 10,
+            'picture': 'http://test.picture/url.png',
+            'user': self.user,
+        }
 
     def test_profile_create__when_first_name_contains_only_letters__expect_success(self):
         profile = Profile(**self.VALID_PROFILE_DATA)
