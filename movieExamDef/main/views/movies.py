@@ -8,7 +8,8 @@ from movieExamDef.main.forms import CreateMovieForm, EditMovieForm, DeleteMovieF
 from movieExamDef.main.models import Movie
 
 
-class CreateMovieView(CreateView):
+class CreateMovieView( CreateView):
+    #permission_required = ('main.add_movie',)
     template_name = 'main/add-movie.html'
     form_class = CreateMovieForm
     success_url = reverse_lazy('dashboard')
@@ -19,25 +20,25 @@ class CreateMovieView(CreateView):
         return kwargs
 
 
-def edit_movie(request, pk):
-    movie = Movie.objects.get(pk=pk)
-    if request.method == 'POST':
-        form = EditMovieForm(request.POST, instance=movie)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = EditMovieForm(instance=movie)
+class EditMovieView(UpdateView):
+    template_name = 'main/edit-movie.html'
+    form_class = EditMovieForm
 
-    context = {
-        'form': form,
-        'movie': movie,
-    }
-    return render(request, 'main/edit-movie.html', context)
-
-# class EditMovieView(UpdateView):
-#     template_name = 'main/edit-movie.html'
-#     form_class = EditMovieForm
+# def edit_movie(request, pk):
+#     movie = Movie.objects.get(pk=pk)
+#     if request.method == 'POST':
+#         form = EditMovieForm(request.POST, instance=movie)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('index')
+#     else:
+#         form = EditMovieForm(instance=movie)
+#
+#     context = {
+#         'form': form,
+#         'movie': movie,
+#     }
+#     return render(request, 'main/edit-movie.html', context)
 
 
 def delete_movie(request, pk):
@@ -55,14 +56,6 @@ def delete_movie(request, pk):
         'movie': movie,
     }
     return render(request, 'main/delete-movie.html', context)
-
-
-# def movie_details(request, pk):
-#     movie = Movie.objects.get(pk=pk)
-#     context = {
-#         'movie': movie
-#     }
-#     return render(request, 'main/movie-details.html', context)
 
 
 class DetailsMovieView(LoginRequiredMixin, DetailView):
