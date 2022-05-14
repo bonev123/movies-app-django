@@ -16,5 +16,5 @@ class RedirectPermissionRequiredMixin(PermissionRequiredMixin):
     login_url = reverse_lazy('dashboard')
 
     def handle_no_permission(self):
-        messages.error(self.request, 'You do not have permission to create new Book! Please contact the administrator.')
+        messages.error(self.request, 'You do not have permission to create a new Movie! Please contact the administrator.')
         return redirect(self.get_login_url())

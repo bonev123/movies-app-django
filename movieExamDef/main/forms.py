@@ -39,10 +39,20 @@ class CreateMovieForm(BootstrapFormMixin, forms.ModelForm):
         }
 
 
-class EditMovieForm(forms.ModelForm):
+# class EditMovieForm(forms.ModelForm):
+#     class Meta:
+#         model = Movie
+#         fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
+
+class EditMovieForm(BootstrapFormMixin, forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+
     class Meta:
         model = Movie
-        fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
+        exclude = ('user_profile',)
 
 
 class DeleteMovieForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelForm):
