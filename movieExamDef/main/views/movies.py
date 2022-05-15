@@ -21,8 +21,12 @@ class CreateMovieView( CreateView):
 
 
 class EditMovieView(UpdateView):
+    model = Movie
     template_name = 'main/edit-movie.html'
     form_class = EditMovieForm
+
+    def get_success_url(self):
+        return reverse_lazy('movie details', kwargs={'pk': self.object.id})
 
 # def edit_movie(request, pk):
 #     movie = Movie.objects.get(pk=pk)

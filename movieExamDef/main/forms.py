@@ -50,6 +50,10 @@ class EditMovieForm(BootstrapFormMixin, forms.ModelForm):
         super().__init__(*args, **kwargs)
         self._init_bootstrap_form_controls()
 
+    def get_queryset(self):
+        queryset = Movie.objects.get(user=self.instance.user, authors__movie__authors=self.object.id)
+        return queryset
+
     class Meta:
         model = Movie
         exclude = ('user_profile',)
