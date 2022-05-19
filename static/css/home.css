@@ -1,0 +1,150 @@
+body {
+    background-image: url('/static/images/movie-theater-buys-back-2022-652x342.jpg');
+    background-size: cover;
+}
+
+.container-inline {
+  margin: 1rem;
+  padding: 2rem 2rem;
+
+}
+
+nav_top,
+footer {
+    background-color: #0B0C10;
+    width: 100%;
+    display: flex;
+    font-size: 16px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 5px 0 3px;
+    margin: 0;
+    color: white;
+}
+
+nav_auth {
+    background-color: #4e3b2b;
+     opacity: 0.9;
+    width: 100%;
+    display: flex;
+    font-size: 16px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 5px 0 3px;
+    margin: 0;
+    color: white;
+}
+
+nav_top a {
+    text-decoration: none;
+    color: #8f8f8f;
+    font-size: 20px;
+    font-weight: bolder;
+    position: relative;
+    margin: 10px;
+}
+
+nav_auth a {
+    text-decoration: none;
+    color: #8f8f8f;
+    font-size: 20px;
+    font-weight: bolder;
+    position: relative;
+    margin: 10px;
+}
+
+nav_top ul {
+    margin: 0 0 0 auto;
+}
+
+nav_auth ul {
+    margin: 0 0 0 auto;
+}
+
+nav_top ul li {
+    display: inline;
+    margin: 0 2px;
+}
+
+nav_auth ul li {
+    display: inline;
+    margin: 0 2px;
+}
+
+li::before {
+    display: inline;
+}
+
+nav_top a {
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+}
+
+nav_auth a {
+    text-decoration: none;
+    border-radius: 50%;
+    color: white;
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 15px;
+    text-align: center;
+    color: #c5c6c7;
+    font-weight: bold;
+}
+
+nav_top a:hover {
+    cursor: pointer;
+    color: #c5c6c7;
+    font-weight: bolder;
+}
+
+nav_auth a:hover {
+    cursor: pointer;
+    color: #c5c6c7;
+    font-weight: bolder;
+}
+
+#welcomePage {
+    float: left;
+    width: 50%;
+    color: #c5c6c7;
+    font-size: 24px;
+    padding: 30px;
+    margin: 10px;
+
+}
+
+#welcomePage img {
+    width: 80%
+}
+
+nav_top > img {
+    width: 90px;
+    height: 80px;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+}
+
+
+/* Style to center grid column */
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+/* Some custom styles to beautify this example */
+.row{
+    background: #4e3b2b;
+    opacity: 0.9;
+}
+.demo-content{
+    padding: 25px;
+    font-size: 18px;
+    background: #abb1b8;
+}

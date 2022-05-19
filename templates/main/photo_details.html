@@ -6,7 +6,7 @@
         <div class="d-inline p-2 w-50">
             <img src="{{ movie_photo.photo.url }}"
                  class="w-100" alt="{{ movie_photo.description }}"/>
-        </div>
+        </div >
         <div class="d-inline p-2 w-50">
             {% for movie in movie_photo.related_movie.all %}
                 <div>

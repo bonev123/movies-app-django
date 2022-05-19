@@ -9,7 +9,6 @@ class MovieListSerializer(ModelSerializer):
         fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price',)
 
 
-
 class MovieFullSerializer(ModelSerializer):
     class Meta:
         model = Movie

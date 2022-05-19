@@ -40,7 +40,7 @@
     <div class="container mb-4">
         <div class="d-flex justify-content-start mb-5">
             {% for movie in movies %}
-                <div style="width: 18rem;">
+                <div style="width: 18rem;" >
                     <h5>{{ movie.movie_name }}</h5>
                     {% if is_owner %}
                         <a href="{% url 'edit movie' movie.pk %}" class="btn btn-primary">Edit</a>

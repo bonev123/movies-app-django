@@ -9,4 +9,5 @@ urlpatterns = [
     path('', include('movieExamDef.main.urls')),
     path('accounts/', include('movieExamDef.accounts.urls')),
     path('api/', include('movieExamDef.rest_api.urls')),
+    path('api-auth/', include('rest_framework.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

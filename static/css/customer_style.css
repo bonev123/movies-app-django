@@ -1,0 +1,78 @@
+
+.ratings i {
+    font-size: 16px;
+    color: red
+}
+
+.strike-text {
+    color: red;
+    text-decoration: line-through
+}
+
+.product-image {
+    width: 100%
+}
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-top: 3px;
+    background-color: #8B4513;
+    border-radius: 50%;
+    display: inline-block
+}
+
+.spec-1 {
+    color: #938787;
+    font-size: 15px
+}
+
+h5 {
+    font-weight: 400
+}
+span {
+    font-weight: 300
+}
+
+.para {
+    font-size: 16px
+}
+
+
+
+transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+}
+
+/* Customer Buttons */
+
+/* ------- customize primary buttons -------- */
+    /* custom primary buttons */
+
+    .btn-primary {
+        color: #212529;
+        background-color: #eeeeee;
+        border-color: #eeeeee;
+        width: 120px !important;
+
+    }
+
+    .btn-primary:hover {
+        color: #212529;
+        background-color: #e2e2e2;
+        border-color: #e2e2e2
+    }
+
+    .btn-primary:focus,
+    .btn-primary.focus {
+        box-shadow: 0 0 0 .2rem rgb(241, 241, 242)
+    }
+
+/* table authors*/
+
+

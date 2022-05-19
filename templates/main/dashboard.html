@@ -11,14 +11,14 @@
     </h1>
 
     {% if movie_photos %}
-        <div class="container">
-            <div class="row">
+        <div class="container mb-5">
+            <div class="row mb-5">
                 {% for movie_photo in movie_photos %}
-                    <div class="card ml-4 mb-4" style="width: 17rem;">
-                        <img src="{{ movie_photo.photo.url }}" alt="Photo description">
+                    <div class="card ml-4 mb-4" style="width: 33%">
+                        <<div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ movie_photo.photo.url }}" alt="Photo description"></div>
                         <div class="card-body" >
                             {% for movie in movie_photo.related_movie.all %}
-                                <h5>{{ movie.movie_name }}</h5>
+                                <h5 class="card-title">{{ movie.movie_name }}</h5>
                             {% endfor %}
                             <p >{{ movie_photo.description|truncatechars:30 }}</p>
                             <a href="{% url 'movie photo details' movie_photo.id %}" class="btn btn-primary">See details</a>

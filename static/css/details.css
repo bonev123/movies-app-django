@@ -1,0 +1,47 @@
+.wrapper {
+    height: 400px;
+    width: 1000px;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 0 0 1.5px 3px gray;
+    margin: 30px auto 200px;
+    background: white;
+    opacity: 0.9;
+}
+
+
+.actionBtn  {
+    display: flex;
+    text-align: center;
+    left: auto;
+    top: auto;
+    right: 0;
+    bottom: 0;
+}
+
+.actionBtn > a {
+	width: 200%;
+	height: 50px;
+	cursor: pointer;
+	border: none;
+    border-radius: 10px;
+	display: inline;
+	align-items: center;
+	justify-content: center;
+	background-color: #aab2bd;
+	background-size: 200% 100%;
+	background-position: left;
+	background-repeat: no-repeat;
+	transition: 500ms;
+    color: black;
+    font-family: "Lato", serif;
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+.actionBtn > a:hover {
+	background-position: right;
+}
