@@ -3,6 +3,7 @@
 
 {% block page_content %}
     <h1 class='text-center'>
+
         {% if movie_photos %}
             All Movie photos
         {% else %}
@@ -18,7 +19,7 @@
                         <<div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ movie_photo.photo.url }}" alt="Photo description"></div>
                         <div class="card-body" >
                             {% for movie in movie_photo.related_movie.all %}
-                                <h5 class="card-title">{{ movie.movie_name }}</h5>
+                                <p id="heading" class='text-center' >{{ movie.movie_name }}</p>
                             {% endfor %}
                             <p >{{ movie_photo.description|truncatechars:30 }}</p>
                             <a href="{% url 'movie photo details' movie_photo.id %}" class="btn btn-primary">See details</a>

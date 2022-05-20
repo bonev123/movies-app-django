@@ -13,7 +13,7 @@
                 <h4>Genre: {{ movie.genre }}</h4>
                 <h4>Price: ${{ movie.price|floatformat:2 }}</h4>
                 {% if movie.description %}
-                    <p>Description: {{ movie.description }}</p>
+                    <p id="heading">Description: {{ movie.description }}</p>
                 {% endif %}
             </div>
             <div>

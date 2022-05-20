@@ -2,15 +2,16 @@
 {% block title %}Edit Movie{% endblock title %}
 
 {% block page_content %}
-    <h1>Edit your movie information</h1>
-
-  <form action="{% url 'edit movie' movie.id %}" method="post">
-    <div class="container">
-        {{ form }}
-        {% csrf_token %}
-        <button class="btn btn-primary" type="submit">Edit Movie</button>
-
-    </div>
-  </form>
-
+    <section class="editPage">
+        <form action="{% url 'edit movie' movie.id %}" method="post">
+            <fieldset>
+                <legend>Edit your movie information</legend>
+                <div class="container">
+                {{ form }}
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit">Edit Movie</button>
+                </div>
+            </fieldset>
+          </form>
+    </section>
 {% endblock %}

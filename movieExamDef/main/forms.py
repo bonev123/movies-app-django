@@ -56,7 +56,7 @@ class EditMovieForm(BootstrapFormMixin, forms.ModelForm):
 
     class Meta:
         model = Movie
-        exclude = ('user_profile',)
+        fields = ('movie_name', 'director', 'genre', 'description', 'image_url', 'price')
 
 
 class DeleteMovieForm(BootstrapFormMixin, DisabledFieldsFormMixin, forms.ModelForm):

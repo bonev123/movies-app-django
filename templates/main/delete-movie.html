@@ -2,15 +2,18 @@
 {% block title %}Delete Movie{% endblock title %}
 
 {% block page_content %}
-    <h1>Are you certain you want to delete this movie?</h1>
+    <section class="editPage">
+    <form action="{% url 'delete movie' movie.id %}" method="post">
+    <fieldset>
+        <legend>Are you certain you want to delete this movie?</legend>
 
-  <form action="{% url 'delete movie' movie.id %}" method="post">
     <div class="container">
         {{ form }}
         {% csrf_token %}
         <button class="btn btn-primary" type="submit">Delete Movie</button>
-
     </div>
-  </form>
+    </fieldset>
+    </form>
+    </section>
 
 {% endblock %}
