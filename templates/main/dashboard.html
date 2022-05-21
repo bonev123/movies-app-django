@@ -12,12 +12,13 @@
     </h1>
 
     {% if movie_photos %}
-        <div class="container mb-5">
-            <div class="row mb-5">
+        <div class="container mt-5 mb-5 " >
+        <div class="d-flex justify-content-center">
+            <div class="col-md-10">
                 {% for movie_photo in movie_photos %}
-                    <div class="card ml-4 mb-4" style="width: 33%">
-                        <<div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ movie_photo.photo.url }}" alt="Photo description"></div>
-                        <div class="card-body" >
+                    <div class="row p-2 bg-white border rounded mt-2">
+                        <div class="col-md-3 mt-1"><img class="img-fluid img-responsive rounded product-image" src="{{ movie_photo.photo.url }}" alt="Photo description"></div>
+                        <div class="col-md-6 mt-1">
                             {% for movie in movie_photo.related_movie.all %}
                                 <p id="heading" class='text-center' >{{ movie.movie_name }}</p>
                             {% endfor %}
@@ -28,7 +29,7 @@
                 {% endfor %}
             </div>
         </div>
-
+        </div>
     {% endif %}
 
 {% endblock %}

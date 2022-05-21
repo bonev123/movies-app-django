@@ -2,15 +2,21 @@
 {% block title %}Login{% endblock title %}
 
 {% block page_content %}
-    <h1 class="text-center">Login to Your Profile</h1>
-    <div id="content-container" class="container p-none">
-        <div class="lgn-container col-lg-7">
-            <form method="POST">
+    <section class="editPage">
+        <form method="POST">
+            <fieldset>
+                <legend>Login to Your Profile</legend>
+                <div class="container">
+
                 {% csrf_token %}
                 {{ form }}
                 <button class="btn btn-primary mt-2" type="submit">Log in</button>
+                </div>
+                <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+            </fieldset>
             </form>
-            <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
-        </div>
-    </div>
+
+    </section>
+
+
 {% endblock %}
