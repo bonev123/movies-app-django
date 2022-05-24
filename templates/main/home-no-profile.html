@@ -3,13 +3,11 @@
 
 {% block page_content %}
 
-<div class="container-inline-block">
+<div class="text-center">
     <h1>Welcome to</h1>
     <h1>My Movie App!</h1>
-    <div class="movie-img">
-        <img src="/static/images/potential%20movie%20image.jpg" class="img-fluid" alt="movie-icon">
-    </div>
+
     <a href="{% url 'login user' %}" class="btn btn-lg btn-secondary">Login</a>
     <a href="{% url 'register' %}" class="btn btn-lg btn-secondary">Register</a>
-    </div>
+</div>
 {% endblock %}

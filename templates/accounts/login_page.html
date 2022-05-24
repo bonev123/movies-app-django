@@ -6,17 +6,14 @@
         <form method="POST">
             <fieldset>
                 <legend>Login to Your Profile</legend>
-                <div class="container">
-
-                {% csrf_token %}
-                {{ form }}
+                    <div class="container">
+                        {% csrf_token %}
+                        {{ form }}
                 <button class="btn btn-primary mt-2" type="submit">Log in</button>
-                </div>
+                    </div>
                 <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
             </fieldset>
-            </form>
-
+        </form>
     </section>
-
 
 {% endblock %}

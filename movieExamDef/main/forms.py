@@ -13,13 +13,17 @@ class CreateMovieForm(BootstrapFormMixin, forms.ModelForm):
         self._init_bootstrap_form_controls()
 
     def save(self, commit=True):
-
         movie = super().save(commit=False)
-
         movie.user = self.user
-        if commit:
-            movie.save()
 
+        if commit:
+            try:
+                exist_movie = Movie.objects.get(
+                    title=self.cleaned_data['movie_name'],
+                    user=self.user,
+                )
+            except movie.DoesNotExist:
+                movie.save()
         return movie
 
     class Meta:
