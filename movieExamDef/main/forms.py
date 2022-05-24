@@ -24,6 +24,7 @@ class CreateMovieForm(BootstrapFormMixin, forms.ModelForm):
                 )
             except movie.DoesNotExist:
                 movie.save()
+
         return movie
 
     class Meta:
